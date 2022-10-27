@@ -1,5 +1,10 @@
-﻿// Задайте двухмерный массив размера m на n
+﻿// Задайте двухмерный массив размера m на n каждый элемент массива находится по формуле
+//А (m+n)
 //Выведите полученный массив на экран
+Console.WriteLine("enter m: ");
+int m = int.Parse(Console.ReadLine());
+Console.WriteLine("enter n: ");
+int n = int.Parse(Console.ReadLine());
 
 int[,] GetArray(int m, int n)
 
@@ -10,25 +15,22 @@ int[,] GetArray(int m, int n)
     {
       for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = rnd.Next(1, 10);
+            array[i, j] = i +j;
         }
     }
     return array;
 } 
      
-string ArrayToString(int[,] array)
+void PrintArray(int[,] array)
 {
-	string result = string.Empty;
-
-	for (int i = 0; i < array.GetLength(0); i++)
-	{
-		for (int j = 0; j < array.GetLength(1); j++)
-		{
-			result += $"{array[i, j]} ";
-		}
-
-		result += Environment.NewLine;
-	}
-
-	return result;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+           Console.Write($"{array[i,j]} ");
+        }
+       Console.WriteLine();
+    } 
+    
 }
+PrintArray(GetArray(m,n));

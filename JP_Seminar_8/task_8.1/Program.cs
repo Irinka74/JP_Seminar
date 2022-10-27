@@ -1,11 +1,10 @@
-﻿// Задайте двухмерный массив. 
-//Найдите элементы, у которых оба индекса четные и  замените эти элементы на их квадраты
+﻿// Задача 53: Задайте двумерный массив.
+// Напишите программу, которая поменяет местами первую и последнюю строку массива.
 
 Console.WriteLine("enter m: ");
 int m = int.Parse(Console.ReadLine());
 Console.WriteLine("enter n: ");
 int n = int.Parse(Console.ReadLine());
-
 
 int[,] GetArray(int m, int n)
 
@@ -21,17 +20,16 @@ int[,] GetArray(int m, int n)
     }
     return array;
 }
+
 int [,] UpdateArray(int[,] array)
 {
- for (int i = 0; i < array.GetLength(0); i++)
+int temp = 0;
+
+ for (int i = 0; i < array.GetLength(1); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            if((i + 1) % 2 == 0 && (j + 1) % 2 == 0 )
-            {
-                array[i, j] = (int) Math.Pow(array[i, j], 2);
-            }
-        }
+        temp = array[0, i];
+        array[0, i] = array[m-1, i];
+        array[m-1, i] = temp;
     }
     return array;
 }
@@ -50,4 +48,6 @@ void PrintArray(int[,] array)
 }
 int [,] array1 = GetArray(m,n);
 PrintArray(array1);
+System.Console.ReadLine();
+
 PrintArray(UpdateArray(array1));
